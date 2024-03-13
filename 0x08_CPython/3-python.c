@@ -60,6 +60,10 @@ void print_python_list(PyObject *p)
 		{
 			print_python_bytes(list->ob_item[i]);
 		}
+		else if (PyFloat_Check(list->ob_item[i]))
+		{
+			print_python_float(list->ob_item[i]);
+		}
 	}
 }
 

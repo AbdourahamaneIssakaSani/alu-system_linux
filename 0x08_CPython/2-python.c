@@ -22,11 +22,11 @@ void print_python_bytes(PyObject *p)
 			printf("  first %ld bytes: %s\n", pb->ob_base.ob_size + 1, pb->ob_sval);
 		else
 		{
-			for (Py_ssize_t i = 0; i < pb->ob_base.ob_size && i < 10; ++i)
+			printf("  first 10 bytes: %s");
+			for (int i = 0; i < pb->ob_base.ob_size && i < 10; ++i)
 			{
 				printf("%02hhx ", pb->ob_sval[i]);
 			}
-			printf("\n");
 		}
 	}
 	else

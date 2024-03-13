@@ -5,6 +5,10 @@
 #include <python3.4/floatobject.h>
 #include <float.h>
 
+void print_python_bytes(PyObject *p);
+void print_python_list(PyObject *p);
+void print_python_float(PyObject *p);
+
 /**
 * print_python_bytes - prints some basic info about Python bytes
 * @p: Python Object

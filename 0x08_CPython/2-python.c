@@ -23,11 +23,12 @@ void print_python_bytes(PyObject *p)
 		else
 			printf("  first 10 bytes:");
 
-		for (int i = 0; i < pb->ob_base.ob_size && i < 10; ++i)
+		for (int i = 0; i <= pb->ob_base.ob_size && i < 10; ++i)
+
 		{
-			printf("%02hhx ", pb->ob_sval[i]);
+			printf(" %02hhx ", pb->ob_sval[i]);
 		}
-        printf("\n");
+		printf("\n");
 	}
 	else
 	{
@@ -43,15 +44,20 @@ void print_python_bytes(PyObject *p)
 */
 void print_python_list(PyObject *p)
 {
+	PyListObject *list = (PyListObject *)p;
+
 	printf("[*] Python list info\n");
-	printf("[*] Size of the Python List = %ld\n", PyList_Size(p));
-	printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
+	printf("[*] Size of the Python List = %ld\n", list->ob_base.ob_size);
+	printf("[*] Allocated = %ld\n", list->allocated);
 
-	for (int i = 0; i < Py_SIZE(p); i++)
-
+	for (Py_ssize_t i = 0; i < list->ob_base.ob_size; i++)
 	{
-		printf("Element %d: %s\n", i, Py_TYPE(PyList_GetItem(p, i))->tp_name);
-		if (PyBytes_Check(PyList_GetItem(p, i)))
-			print_python_bytes(PyList_GetItem(p, i));
+		printf("Element %ld: %s\n", i, Py_TYPE(list->ob_item[i])->tp_name);
+
+
+		if (PyBytes_Check(list->ob_item[i]))
+		{
+			print_python_bytes(list->ob_item[i]);
+		}
 	}
 }

@@ -19,14 +19,13 @@ void print_python_bytes(PyObject *p)
 		printf("  size: %ld\n", pb->ob_base.ob_size);
 		printf("  trying string: %s\n", pb->ob_sval);
 		if (pb->ob_base.ob_size < 10)
-			printf("  first %ld bytes: %s\n", pb->ob_base.ob_size + 1, pb->ob_sval);
+			printf("  first %ld bytes:", pb->ob_base.ob_size + 1);
 		else
-		{
 			printf("  first 10 bytes: %s");
-			for (int i = 0; i < pb->ob_base.ob_size && i < 10; ++i)
-			{
-				printf("%02hhx ", pb->ob_sval[i]);
-			}
+
+		for (int i = 0; i < pb->ob_base.ob_size && i < 10; ++i)
+		{
+			printf("%02hhx ", pb->ob_sval[i]);
 		}
 	}
 	else

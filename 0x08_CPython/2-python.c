@@ -1,7 +1,7 @@
-#include <python3.8/Python.h>
-#include <python3.8/listobject.h>
-#include <python3.8/object.h>
-#include <python3.8/bytesobject.h>
+#include <python3.4/Python.h>
+#include <python3.4/listobject.h>
+#include <python3.4/object.h>
+#include <python3.4/bytesobject.h>
 
 
 /**

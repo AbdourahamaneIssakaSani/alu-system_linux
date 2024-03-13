@@ -84,7 +84,8 @@ void print_python_float(PyObject *p)
 	printf("[.] float object info\n");
 	if (PyFloat_Check(p))
 	{
-		str = PyOS_double_to_string(pf->ob_fval, 'r', 0, Py_DTSF_ADD_DOT_0, NULL);
+		str = PyOS_double_to_string((double)pf->ob_fval,
+									'r', 0, Py_DTSF_ADD_DOT_0, NULL);
 		printf("  value: %s\n", str);
 	}
 	else

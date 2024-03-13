@@ -1,7 +1,7 @@
-#include <python3.4/Python.h>
-#include <python3.4/listobject.h>
-#include <python3.4/object.h>
-#include <python3.4/bytesobject.h>
+#include <python3.8/Python.h>
+#include <python3.8/listobject.h>
+#include <python3.8/object.h>
+#include <python3.8/bytesobject.h>
 
 
 /**
@@ -22,7 +22,7 @@ void print_python_bytes(PyObject *p)
 		if (pb->ob_base.ob_size < 10)
 			printf("  first %ld bytes: %s\n", pb->ob_base.ob_size + 1, pb->ob_sval);
 		else
-			printf("  first 10 bytes: %s\n", pb->ob_sval);
+			printf("  first 10 bytes: %02hhx\n", pb->ob_sval);
 	}
 	else
 	{

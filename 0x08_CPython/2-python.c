@@ -26,7 +26,7 @@ void print_python_bytes(PyObject *p)
 		for (int i = 0; i <= pb->ob_base.ob_size && i < 10; ++i)
 
 		{
-			printf(" %02hhx ", pb->ob_sval[i]);
+			printf(" %02hhx", pb->ob_sval[i]);
 		}
 		printf("\n");
 	}

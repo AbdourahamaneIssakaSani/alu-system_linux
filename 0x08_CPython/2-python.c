@@ -27,6 +27,7 @@ void print_python_bytes(PyObject *p)
 		{
 			printf("%02hhx ", pb->ob_sval[i]);
 		}
+        printf("\n");
 	}
 	else
 	{

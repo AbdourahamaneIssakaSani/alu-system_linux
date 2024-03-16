@@ -79,7 +79,7 @@ void print_python_list(PyObject *p)
 void print_python_float(PyObject *p)
 {
 	PyFloatObject *pf = (PyFloatObject *)p;
-	char *str;
+	char *str = NULL;
 
 	double d = pf->ob_fval;
 

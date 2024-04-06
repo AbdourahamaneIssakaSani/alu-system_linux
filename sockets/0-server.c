@@ -19,17 +19,15 @@ int main(void)
 	struct sockaddr_in addr;
 
 	if (server_fd == -1)
-    {
+	{
 		perror("socket failed");
 		return (1);
 	}
 
 	/*See man setsockopt*/
-	if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0)
-		perror("SO_REUSEADDR failed");
-
-	if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEPORT, &enable, sizeof(int)) < 0)
-		perror("SO_REUSEPORT failed");
+	if (setsockopt(server_fd, SOL_SOCKET,
+	SO_REUSEADDR | SO_REUSEPORT, &enable, sizeof(int)) < 0)
+		perror("SO_REUSEADDR | SO_REUSEPORT failed");
 
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(12345);
@@ -46,8 +44,6 @@ int main(void)
 		perror("listen failed");
 		return (1);
 	}
-
-	printf("Listening on port 12345\n");
 
 	while (1)
 		continue;

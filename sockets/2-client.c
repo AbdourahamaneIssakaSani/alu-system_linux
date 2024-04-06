@@ -34,10 +34,9 @@ int main(int argc, char **argv)
 	port = atoi(argv[2]);
 
 	client_fd = socket(AF_INET, SOCK_STREAM, 0);
-
 	if (client_fd == -1)
 	{
-		perror("socket failed");
+		perror("Socket creation failed");
 		return (1);
 	}
 
@@ -46,8 +45,9 @@ int main(int argc, char **argv)
 	server_addr.sin_addr.s_addr = inet_addr(host);
 
 	if (connect(client_fd, (struct sockaddr *)&server_addr,
-	sizeof(server_addr)) == -1)
+				sizeof(server_addr)) == -1)
 	{
+		perror("Connection failed");
 		close(client_fd);
 		return (1);
 	}

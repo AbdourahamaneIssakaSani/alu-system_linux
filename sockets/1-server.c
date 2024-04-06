@@ -18,6 +18,7 @@ int main(void)
 {
 	struct sockaddr_in client_addr;
 	socklen_t client_addr_len = sizeof(client_addr);
+	int client_fd;
 
 	int server_fd = setup_server_socket();
 
@@ -26,7 +27,7 @@ int main(void)
 		return (1);
 	}
 
-	int client_fd = accept(server_fd,
+	client_fd = accept(server_fd,
 	(struct sockaddr *)&client_addr, &client_addr_len);
 
 	if (client_fd == -1)
